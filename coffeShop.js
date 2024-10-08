@@ -133,3 +133,20 @@ class CoffeeShop {
       .map(({ foodName }) => foodName);
   }
 }
+
+const tcs = new CoffeeShop("Tesha's coffee shop", generalMenu)
+
+console.log(tcs.addOrder("hot cocoa")); 
+console.log(tcs.addOrder("iced tea")); 
+console.log(tcs.addOrder("cinnamon roll")); 
+console.log(tcs.addOrder("iced coffee")); 
+console.log(tcs.listOrders()); 
+console.log(tcs.dueAmount()); 
+console.log(tcs.fulfillOrder()); 
+console.log(tcs.fulfillOrder()); 
+console.log(tcs.fulfillOrder()); 
+console.log(tcs.listOrders()); 
+console.log(tcs.dueAmount()); 
+console.log(tcs.cheapestItem())
+console.log(tcs.drinksOnly())
+console.log(tcs.foodOnly())
