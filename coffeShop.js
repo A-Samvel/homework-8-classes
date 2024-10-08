@@ -109,4 +109,15 @@ class CoffeeShop {
   dueAmount() {
     return this.#orders.reduce((acc, { price }) => acc + price, 0);
   }
+
+  cheapestItem() {
+    const cheapestItem = this.#menu.reduce(
+      (acc, currentObj) => {
+        return currentObj.price < acc.price ? currentObj : acc;
+      },
+      { price: Infinity }
+    );
+
+    return cheapestItem.foodName;
+  }
 }
