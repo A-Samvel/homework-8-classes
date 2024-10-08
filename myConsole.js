@@ -33,3 +33,10 @@ class Console {
     return this.#history;
   }
 }
+
+const myConsole = new Console("Regular");
+myConsole.log([0, 1, 2, 3]);
+myConsole.log({ a: 1, b: 2 });
+myConsole.log("ok : ", 1, 2, 3);
+
+console.log(myConsole.history(3));
