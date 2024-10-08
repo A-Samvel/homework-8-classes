@@ -4,18 +4,22 @@ class Console {
     this.#history = [];
   }
 
+  #logsPainting(item) {
+    let newString = "";
+    if (Array.isArray(item)) newString += `[${item.join(",")}]`;
+    else if (typeof item === "object") {
+      let newMessage = "{";
+      for (const key in item) {
+        newMessage += `${key}:${item[key]},`;
+      }
+      newString += newMessage.slice(0, -1) + "}";
+    } else newString += `${item}`;
+    return newString;
+  }
+
   log(...args) {
     let logMessage = "";
-    args.forEach((arg) => {
-      if (Array.isArray(arg)) logMessage += `[${arg.join(",")}]`;
-      else if (typeof arg === "object") {
-        let newMessage = "{";
-        for (const key in arg) {
-          newMessage += `${key}:${arg[key]},`;
-        }
-        logMessage += newMessage.slice(0, -1) + "}";
-      } else logMessage += `${arg}`;
-    });
+    args.forEach((arg) => (logMessage += this.#logsPainting(arg)));
     this.#history.push(logMessage);
     console.log(logMessage);
     return logMessage;
