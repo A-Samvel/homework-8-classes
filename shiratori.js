@@ -46,4 +46,21 @@ class Shiritory {
       }
     } else throw new Error("Invalid Word");
   }
+  restart() {
+    this.words = [];
+    this.#gameOver = false;
+    return "game restarted";
+  }
 }
+
+const myShiritori = new Shiritory();
+
+console.log(myShiritori.play("apple")); 
+console.log(myShiritori.play("ear")); 
+console.log(myShiritori.play("rhino")); 
+console.log(myShiritori.play("corn")); 
+
+console.log(myShiritori.words);
+
+console.log(myShiritori.restart()); 
+console.log(myShiritori.words);
