@@ -92,4 +92,13 @@ class CoffeeShop {
     }
     return "This item is currently unavailable!";
   }
+
+  fulfillOrder() {
+    if (this.#orders.length !== 0) {
+      const res = this.#orderNames.shift();
+      this.#orders.shift();
+      return `The ${res} is ready!.`;
+    }
+    return "All orders have been fulfilled!";
+  }
 }
