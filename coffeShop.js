@@ -120,4 +120,16 @@ class CoffeeShop {
 
     return cheapestItem.foodName;
   }
+
+  drinksOnly() {
+    return this.#menu
+      .filter(({ type }) => type === "drink")
+      .map(({ foodName }) => foodName);
+  }
+
+  foodOnly() {
+    return this.#menu
+      .filter(({ type }) => type === "whetherfood")
+      .map(({ foodName }) => foodName);
+  }
 }
