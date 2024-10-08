@@ -101,4 +101,12 @@ class CoffeeShop {
     }
     return "All orders have been fulfilled!";
   }
+
+  listOrders() {
+    return this.#orderNames;
+  }
+
+  dueAmount() {
+    return this.#orders.reduce((acc, { price }) => acc + price, 0);
+  }
 }
