@@ -20,4 +20,16 @@ class Console {
     console.log(logMessage);
     return logMessage;
   }
+
+  clearHistory() {
+    this.#history = [];
+    return `Memory cleared successfully`;
+  }
+
+  history(range) {
+    if (range) {
+      return this.#history.slice(0, range);
+    }
+    return this.#history;
+  }
 }
