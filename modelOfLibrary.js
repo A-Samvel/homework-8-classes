@@ -45,7 +45,7 @@ const book2 = new LibraryBookBase(
   7884
 );*/
 
-class LibraryBook {
+class LibraryBook extends LibraryBookBase {
   #quantity;
   constructor(title, author, bookId, quantity) {
     super(title, author, bookId);
@@ -67,5 +67,27 @@ class LibraryBook {
   }
   decreaseQuantityBy(amount) {
     this.#quantity -= amount;
+  }
+}
+
+class ReaderBook extends LibraryBookBase {
+    #expirationDate
+    #isReturned
+  constructor(title, author, bookId,expirationDate) {
+    super(title, author, bookId)
+    this.#expirationDate = expirationDate
+    this.#isReturned = true
+  }
+
+  get expirationDate(){
+    return this.#expirationDate
+  }
+  get isReturned(){
+    return this.#isReturned
+  }
+
+  toString(){
+    const returned = this.#isReturned === true ? 'returned' : "don't returned"
+    return `${this.title}'s(bookID:${this.bookId}) expiration Date is ${this.#expirationDate}. It's ${returned}`
   }
 }
