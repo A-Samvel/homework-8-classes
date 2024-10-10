@@ -49,4 +49,35 @@ class Account {
   toString() {
     return `${this.#name}'s account balance is ${this.balance}AMD`;
   }
+
+  static identifyAccounts(accountFirst, accountSecond) {
+    if (
+      !(accountFirst instanceof Account) ||
+      !(accountSecond instanceof Account)
+    ) {
+      throw new Error("Both arguments must be instances of Account.");
+    }
+
+    return (
+      accountFirst.id === accountSecond.id &&
+      accountFirst.name === accountSecond.name &&
+      accountFirst.balance === accountSecond.balance
+    );
+  }
 }
+
+const savingAcc = new Account("Saving account", 2000);
+const cardAcc = new Account("Card account", 1000);
+
+console.log(savingAcc.debit(500));
+console.log(cardAcc.credit(500));
+
+cardAcc.transferTo(savingAcc, 1000);
+
+console.log(savingAcc.balance, cardAcc.balance);
+
+const anotherAcc = savingAcc;
+
+console.log(Account.identifyAccounts(cardAcc, savingAcc));
+
+console.log(savingAcc.toString());
