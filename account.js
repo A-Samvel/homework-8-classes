@@ -27,4 +27,15 @@ class Account {
   set balance(a) {
     throw new Error("You can't change balance");
   }
+
+  credit(amount) {
+    this.#balance += amount;
+    return this.#balance;
+  }
+
+  debit(amount) {
+    if (this.#balance < amount) return "Amount exceeded balance";
+    this.#balance -= amount;
+    return this.#balance;
+  }
 }
