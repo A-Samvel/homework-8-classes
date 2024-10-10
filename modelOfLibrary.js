@@ -12,20 +12,33 @@ class Book {
     return this.#author;
   }
 
-  toString(){
-    return `${this.#author} is author of "${this.#title}"`
+  toString() {
+    return `${this.#author} is author of "${this.#title}"`;
   }
 
-  isTheSameBook(book){
-    const {title,author} = book
-    return this.#title === title && this.#author === author
+  isTheSameBook(book) {
+    const { title, author } = book;
+    return this.#title === title && this.#author === author;
   }
 }
 
-const book1 = new Book("Misterious Island","Jules Verne")
-const book2 = new Book("A Study in Scarlet","Arthur Conan Doyle")
-const book3  = new Book("Misterious Island","Jules Verne")
+class LibraryBookBase extends Book {
+  #bookId;
+  constructor(title, author, bookId) {
+    super(title, author);
+    this.#bookId = bookId;
+  }
+
+  get bookId() {
+    return this.#bookId;
+  }
+
+  toString() {
+    return `${this.title}'s book ID is ${this.#bookId},author ${this.author}`;
+  }
+}
+
+const book1 = new LibraryBookBase("Misterious Island", "Jules Verne",1256);
+const book2 = new LibraryBookBase("A Study in Scarlet", "Arthur Conan Doyle",7884);
 
 console.log(book1.toString())
-console.log(book1.isTheSameBook(book2))
-console.log(book1.isTheSameBook(book3))
