@@ -38,4 +38,15 @@ class Account {
     this.#balance -= amount;
     return this.#balance;
   }
+
+  transferTo(anotherAccount, amount) {
+    if (this.#balance < amount) return "Amount exceeded balance";
+    this.debit(amount);
+    anotherAccount.credit(amount);
+    return this.#balance;
+  }
+
+  toString() {
+    return `${this.#name}'s account balance is ${this.balance}AMD`;
+  }
 }
