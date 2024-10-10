@@ -38,7 +38,34 @@ class LibraryBookBase extends Book {
   }
 }
 
-const book1 = new LibraryBookBase("Misterious Island", "Jules Verne",1256);
-const book2 = new LibraryBookBase("A Study in Scarlet", "Arthur Conan Doyle",7884);
+/*const book1 = new LibraryBookBase("Misterious Island", "Jules Verne", 1256);
+const book2 = new LibraryBookBase(
+  "A Study in Scarlet",
+  "Arthur Conan Doyle",
+  7884
+);*/
 
-console.log(book1.toString())
+class LibraryBook {
+  #quantity;
+  constructor(title, author, bookId, quantity) {
+    super(title, author, bookId);
+    this.#quantity = quantity;
+  }
+
+  get quantity() {
+    return this.#quantity;
+  }
+
+  toString() {
+    return `In stock of ${this.author}'s ${this.title} is ${
+      this.#quantity
+    }, bookID : ${this.bookId}`;
+  }
+
+  increaseQuantityBy(amount) {
+    this.#quantity += amount;
+  }
+  decreaseQuantityBy(amount) {
+    this.#quantity -= amount;
+  }
+}
